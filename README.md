@@ -1,5 +1,5 @@
 
-Link naar API WEEK 1: https://max-hauser.github.io/web-app-from-scratch-2021/index.html
+Link naar API WEEK 1: https://jeffreyvankampen.github.io/visitekaartje/
 
 # Web App From Scratch @cmda-minor-web 2020 - 2021
 
