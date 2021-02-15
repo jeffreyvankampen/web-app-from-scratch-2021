@@ -16,7 +16,7 @@ function handleRoutes() {
 
 async function getData(value) {
   const key = '827f3e5d';
-  const endpoint = 'http://www.omdbapi.com/';
+  const endpoint = 'https://www.omdbapi.com/';
   let url = `${endpoint}?apikey=${key}&s=new`;
 
   if (value) {
