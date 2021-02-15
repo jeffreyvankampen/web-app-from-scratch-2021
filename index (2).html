@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 6em;
+        list-style-type: none;
+    }
+
+    ul div {
+        display: flex;
+        height: 200px;
+        width: 300px;
+        position: relative;
+    }
+
+    ul div img{
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+        position: absolute;
+        filter: brightness(0.5);
+    }  
+
+    h1 {
+      z-index: 2;
+      color: #fff;
+      margin-top: 7vh;
+      padding-left: 10px;
+    }    
+
+    section#card {
+      background: #111;
+      padding: 10px;
+      width: 100%;
+      overflow-x: scroll;
+    }    
+  </style>
+</head>
+<body>
+
+  <main>
+    <section id="card"></section>
+  </main>
+
+  <script>
+    const key = "469dd1e3"; // api key
+    fetch(`http://www.omdbapi.com/?s=title&apikey=${key}`) // fetch + link + key
+    .then(response => response.json()) // krijgt de 'response van de api en zet het om naar JSON' 
+    .then(data => showData(data)); // verkrijg de data en verstuur de data naar een andere functie  
+  
+    async function showData(data) {
+      // toont de data op de website
+      const movies = await data.Search; // met de 'await' wacht het script tot de data geladen is
+      console.log(movies); // kan je in de console kijken wat de mogelijk data is
+      const section = document.querySelector('#card'); // selecteer je de section in de html
+      let ul = `<ul>`;
+      movies.forEach(movie => {
+        ul += `<li><div><h1>${movie.Title}</h1> <img src="${movie.Poster}" /></li>`;
+      });
+      ul += '</ul>';
+      
+
+      section.insertAdjacentHTML('beforeend', ul);  // voeg je de data toe aan de html..
+    }   
+  </script>  
+  
+</body>
+</html>
